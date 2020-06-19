@@ -6,9 +6,10 @@
  * Time: 17:31
  */
 
-require_once('../core/helper.php');
+/* Config */
 require_once('../support/env.php');
-require_once('../core/config.php');
+require_once('config.php');
+require_once('helper.php');
 
 if (env('APP_DEBUG', 'true'))
 {
@@ -17,3 +18,5 @@ if (env('APP_DEBUG', 'true'))
     $whoops->register();
 }
 
+/* DataBase */
+require_once('database.php');
