@@ -6,6 +6,8 @@
  * Time: 17:31
  */
 
+namespace core;
+
 /* Config */
 require_once('../support/env.php');
 require_once('config.php');
@@ -20,3 +22,13 @@ if (env('APP_DEBUG', 'true'))
 
 /* DataBase */
 require_once('database.php');
+
+/* Router */
+require_once('router.php');
+
+/* Route */
+require_once('../app/web.php');
+
+/* init Router */
+new Router();
+
