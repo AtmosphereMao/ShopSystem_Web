@@ -1,0 +1,12 @@
+{
+    "name": "atmospheremao/php-web-homework",
+    "require": {
+        "filp/whoops": "2.7"
+    },
+    "authors": [
+        {
+            "name": "AtmosphereMao",
+            "email": "493563560@qq.com"
+        }
+    ]
+}
