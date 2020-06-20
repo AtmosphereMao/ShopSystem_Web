@@ -34,6 +34,7 @@ if (! function_exists('view')) {
         require_once('../core/function.php');
 
         echo View::display($path, $data);
+        return View::display($path, $data);
     }
 }
 
@@ -176,9 +177,20 @@ if (! function_exists('abort')) {
 
     function abort($code, $message = null)
     {
-        if ($code == '404')
-            $message = '找不到该页面';
-        \view('abort/abort',['code' => $code, 'message' => $message]);
-        die("404");
+        \view('abort/abort',['code' => $code, 'message' => $message ? $message : k($code)]);
+        die('error');
+    }
+}
+
+if (! function_exists('is_email')) {
+
+    function is_email($email_str)
+    {
+        $search = '/^([a-z0-9+_-]+)(.[a-z0-9+_-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix';
+        if ( preg_match($search, $email_str) ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

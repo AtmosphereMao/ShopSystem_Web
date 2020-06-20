@@ -49,7 +49,8 @@ class Database
     public function insert($tableName, $data)
     {
         $this->mode = 'i';
-        $keyString = implode(array_keys($data), ',');
+        $keyString = implode(',', array_keys($data));
+
         $valueMask = '';
 
         for ($i = 0; $i < count(array_values($data)); $i++) {
@@ -60,7 +61,13 @@ class Database
         }
 
         $this->queryString = "INSERT INTO `$tableName` ($keyString) VALUES ($valueMask)";
-        $this->end();
+        if (!is_array($data)) {
+            $this->queryData = array_merge($this->queryData, array($data));
+        } else {
+            $this->queryData = array_merge($this->queryData, $data);
+        }
+        var_dump($this->queryString);
+        return $this->end();
     }
 
     public function update($tableName, $data)
@@ -106,10 +113,14 @@ class Database
 
         if ($stmt !== false) {
             if ($stmtType !== '') {
+                var_dump(array_values($this->queryData));
                 $stmt->bind_param($stmtType, ...array_values($this->queryData));
             }
             $stmt->execute();
+            $result = $stmt->get_result();
+            return $result;
         }
+        return false;
     }
 
     public function where($query, $data = array())

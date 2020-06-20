@@ -104,4 +104,14 @@ return [
     'prev'                   => '上一步',
     'next'                   => '下一步',
     'quick_create'           => '快速创建',
+    'email_error_format'     => '邮箱格式错误，长度不能大于50',
+    'login_error'            => '邮箱或密码错误',
+    'name_error_format'      => '用户名格式错误，长度不能大于15',
+    'register_error'         => '邮箱已存在',
+    'register_complete'      => '注册成功',
+    '404'                    => '页面未找到',
+    '500'                    => '服务器发送未知错误，请联系管理员',
+    '403'                    => '权限不足'
+
+
 ];

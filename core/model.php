@@ -19,8 +19,8 @@ class Model extends Handler
         $this->db = $this->DB->select($table);
     }
 
-    public static function getModel($table)
+    public static function getModel()
     {
-        return parent::getDB()->select($table);
+        return parent::getDB();
     }
 }

@@ -9,9 +9,13 @@
 use core\Router;
 
 Router::GET('/', 'HomeController/index');
-Router::GET('/add', 'Main/add');
-Router::POST('/add', 'Main/addAction');
-Router::GET('/edit', 'Main/edit');
-Router::POST('/edit', 'Main/editAction');
-Router::GET('/delete', 'Main/delete');
-Router::POST('/delete', 'Main/deleteAction');
+
+/* Auth */
+Router::GET('/login', 'LoginController/index');
+Router::POST('/login', 'LoginController/login');
+Router::GET('/register', 'RegisterController/index');
+Router::POST('/register', 'RegisterController/register');
+Router::POST('/logout', 'LoginController/logout');
+
+
+/* Trends */

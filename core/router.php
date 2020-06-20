@@ -28,16 +28,22 @@ class Router
         // Session
         session_start();
 
+        // Timezone
+        date_default_timezone_set("Asia/Shanghai");
+
         $this->pathProcessor();
         // include the file.
         require_once('../handler/Handler.php');
+
+        /* Auth */
+        require_once('auth.php');
+
+        /* Controller */
         require_once('../app/Http/Controller/' . $this->handlerFile . '.php');
 
         /* Model */
         require_once('model.php');
-
-        /* Auth */
-        require_once('auth.php');
+        require_once('../app/Http/Model/Users.php');
 
 
         $handler = new $this->handlerFile();

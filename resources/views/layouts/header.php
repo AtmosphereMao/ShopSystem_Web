@@ -19,7 +19,8 @@
     <link href="<?=asset('css/custom.css?version=1.1.0')?>" rel="stylesheet" type="text/css">
     <script src="<?=asset('js/jquery.min.js')?>"></script>
     <script src="<?=asset('js/main.js')?>"></script>
-
+    <script src="<?=asset('lib/layer/layer.js')?>" charset="utf-8"></script>
+    <script src="<?=asset('js/home.js')?>" charset="utf-8"></script>
 
 
 </head>
