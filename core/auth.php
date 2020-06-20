@@ -81,7 +81,7 @@ class Auth extends Handler
             'balance'   => 0
         ];
         $result = Model::getModel()->insert('users', $data);
-        return $result ? true : abort('500');
+        return !$result ? true : abort('500');
 
     }
 

@@ -15,6 +15,11 @@ class HomeController extends Handler
     public function index()
     {
 
+        return self::redirect('/home');
+    }
+
+    public function home()
+    {
         return view('index');
     }
 }

@@ -67,12 +67,24 @@ class Router
     private function pathProcessor()
     {
         $urlPathInfo = @explode('/', $_SERVER['REQUEST_URI']);
-        $this->urlPath = @$urlPathInfo[1];
+        if(count($urlPathInfo)>1){
+            for($i=1; $i < count($urlPathInfo); $i++)
+            {
+                $this->urlPath .= $urlPathInfo[$i] . '/';
+            }
+            if(substr($this->urlPath,-2) == '//')
+            {
+                $this->urlPath = substr($this->urlPath,0,strlen($this->urlPath)-2);
+            }else{
+                $this->urlPath = substr($this->urlPath,0,strlen($this->urlPath)-1);
+            }
+        }else{
+            $this->urlPath = @$urlPathInfo[1];
+        }
         if ($this->urlPath == null) {
             // default handler
             $this->urlPath = '';
         }
-
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         // check the router table
         if (!isset(self::$routerTable[$requestMethod][$this->urlPath])) {

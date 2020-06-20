@@ -16,11 +16,10 @@ class Users extends Model
 
     public function __construct()
     {
-        parent::__construct(self::TABLE);
     }
 
     public static function query()
     {
-        return parent::getModel(self::TABLE);
+        return parent::getModel()->select(self::TABLE);
     }
 }

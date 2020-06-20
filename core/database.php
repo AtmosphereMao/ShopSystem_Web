@@ -66,7 +66,6 @@ class Database
         } else {
             $this->queryData = array_merge($this->queryData, $data);
         }
-        var_dump($this->queryString);
         return $this->end();
     }
 
@@ -113,11 +112,10 @@ class Database
 
         if ($stmt !== false) {
             if ($stmtType !== '') {
-                var_dump(array_values($this->queryData));
                 $stmt->bind_param($stmtType, ...array_values($this->queryData));
             }
             $stmt->execute();
-            $result = $stmt->get_result();
+            $result = $stmt->get_warnings();
             return $result;
         }
         return false;
