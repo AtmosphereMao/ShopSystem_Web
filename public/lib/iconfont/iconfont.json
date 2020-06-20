@@ -1,0 +1,177 @@
+{
+  "id": "1734825",
+  "name": "file",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8487653",
+      "name": "返回",
+      "font_class": "fanhui_huabanfuben",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "9976090",
+      "name": "数据文件",
+      "font_class": "dat",
+      "unicode": "e691",
+      "unicode_decimal": 59025
+    },
+    {
+      "icon_id": "9976091",
+      "name": "音频文件",
+      "font_class": "audio",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    },
+    {
+      "icon_id": "9976092",
+      "name": "视频文件",
+      "font_class": "video1",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "9976582",
+      "name": "压缩类文件",
+      "font_class": "zip1",
+      "unicode": "e694",
+      "unicode_decimal": 59028
+    },
+    {
+      "icon_id": "9976585",
+      "name": "图片文件",
+      "font_class": "image",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "9976590",
+      "name": "pdf文件",
+      "font_class": "pdf",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "9976591",
+      "name": "ppt文件",
+      "font_class": "ppt",
+      "unicode": "e697",
+      "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "9976592",
+      "name": "excel文件",
+      "font_class": "21excel",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "9976593",
+      "name": "word文件",
+      "font_class": "21word",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "88051",
+      "name": "file",
+      "font_class": "file",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "924585",
+      "name": "video",
+      "font_class": "video",
+      "unicode": "e977",
+      "unicode_decimal": 59767
+    },
+    {
+      "icon_id": "1116952",
+      "name": "zip",
+      "font_class": "zip",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "1160156",
+      "name": "html",
+      "font_class": "html",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "1200608",
+      "name": "html",
+      "font_class": "html1",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "1740813",
+      "name": "846格式_视频flv",
+      "font_class": "geshi_shipinflv",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "2668433",
+      "name": "文件夹",
+      "font_class": "wenjianjia",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "2815733",
+      "name": "文件夹",
+      "font_class": "wenjianjia1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "5916394",
+      "name": "AVI",
+      "font_class": "AVI",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "5916406",
+      "name": "HTML",
+      "font_class": "HTML",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "5916419",
+      "name": "MP4",
+      "font_class": "MP",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "5916428",
+      "name": "RAR",
+      "font_class": "RAR",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "5916440",
+      "name": "ZIP",
+      "font_class": "ZIP",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "9881677",
+      "name": "KHCFDC_TXT",
+      "font_class": "TXTCopy",
+      "unicode": "e6ec",
+      "unicode_decimal": 59116
+    }
+  ]
+}

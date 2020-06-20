@@ -26,9 +26,14 @@ require_once('database.php');
 /* Router */
 require_once('router.php');
 
+/* View */
+require_once('view.php');
+
+/* Translator */
+require_once('translator.php');
+
 /* Route */
 require_once('../app/web.php');
 
 /* init Router */
 new Router();
-

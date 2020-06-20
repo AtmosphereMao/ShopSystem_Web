@@ -35,8 +35,8 @@ class Env
             foreach ($contentList as $item => $value) {
                 if (strlen($value) !== 1 or 0) {
                     $temp = preg_split('/[=,]+/', $value);
-                    $valueList[$temp[0]] = $temp[1];
-                    $memCache->set($temp[0], $temp[1]);
+                    $valueList[$temp[0]] = substr($temp[1],0,strlen($temp[1])-1);
+                    $memCache->set($temp[0], $valueList[$temp[0]]);
                 }
             }
             fclose($handle);

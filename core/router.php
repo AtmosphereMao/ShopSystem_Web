@@ -9,6 +9,9 @@
 namespace core;
 
 
+
+use function Couchbase\defaultDecoder;
+
 class Router
 {
     private static $routerTable = array(
@@ -22,30 +25,42 @@ class Router
 
     public function __construct()
     {
+        // Session
+        session_start();
+
         $this->pathProcessor();
         // include the file.
         require_once('../handler/Handler.php');
-        require_once('../handler/' . $this->handlerFile . '.php');
+        require_once('../app/Http/Controller/' . $this->handlerFile . '.php');
+
+        /* Model */
+        require_once('model.php');
+
+        /* Auth */
+        require_once('auth.php');
+
 
         $handler = new $this->handlerFile();
-        $handler->{$this->handlerMethod}();
+        $handler->{
+            $this->handlerMethod
+        }();
     }
 
     public static function GET($path, $handler)
     {
-        $path = trim($path, '@');
+        $path = trim($path, '/');
         self::$routerTable['GET'][$path] = $handler;
     }
 
     public static function POST($path, $handler)
     {
-        $path = trim($path, '@');
+        $path = trim($path, '/');
         self::$routerTable['POST'][$path] = $handler;
     }
 
     private function pathProcessor()
     {
-        $urlPathInfo = @explode('/', $_SERVER['PATH_INFO']);
+        $urlPathInfo = @explode('/', $_SERVER['REQUEST_URI']);
         $this->urlPath = @$urlPathInfo[1];
         if ($this->urlPath == null) {
             // default handler
@@ -53,7 +68,6 @@ class Router
         }
 
         $requestMethod = $_SERVER['REQUEST_METHOD'];
-
         // check the router table
         if (!isset(self::$routerTable[$requestMethod][$this->urlPath])) {
             $this->urlPath = 'NotFound';

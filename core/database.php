@@ -25,7 +25,7 @@ class DB
                 $config["DB_USERNAME"],
                 $config["DB_PASSWORD"],
                 $config["DB_DATABASE"],
-                $config['DB_PORT']
+                (int)$config["DB_PORT"]
             );
             self::$DB = $db;
         }
@@ -39,14 +39,14 @@ class Database
     private $mode = '';
 
 
-    public function Select($tableName)
+    public function select($tableName)
     {
         $this->mode = 's';
         $this->queryString = "SELECT * FROM `$tableName` ";
         return $this;
     }
 
-    public function Insert($tableName, $data)
+    public function insert($tableName, $data)
     {
         $this->mode = 'i';
         $keyString = implode(array_keys($data), ',');
@@ -60,10 +60,10 @@ class Database
         }
 
         $this->queryString = "INSERT INTO `$tableName` ($keyString) VALUES ($valueMask)";
-        $this->End();
+        $this->end();
     }
 
-    public function Update($tableName, $data)
+    public function update($tableName, $data)
     {
         $this->mode = 'u';
         $this->queryString = "UPDATE `$tableName` SET ";
@@ -82,14 +82,14 @@ class Database
         return $this;
     }
 
-    public function Delete($tableName)
+    public function delete($tableName)
     {
         $this->mode = 'd';
         $this->queryString = "DELETE FROM `$tableName` ";
         return $this;
     }
 
-    public function End()
+    public function end()
     {
         $db = DB::getInstance();
         $stmt = $db->prepare($this->queryString);
@@ -112,7 +112,7 @@ class Database
         }
     }
 
-    public function Where($query, $data = array())
+    public function where($query, $data = array())
     {
         $this->queryString .= " WHERE ($query)";
 
@@ -125,7 +125,7 @@ class Database
         return $this;
     }
 
-    public function Fetch()
+    public function fetch()
     {
         $this->queryString .= ';';
         $db = DB::getInstance();

@@ -22,10 +22,10 @@ class Config
             'APP_URL' => env('APP_URL','http://localhost'),
 
             'DB_HOST' => env('DB_HOST', 'localhost'),
-            'DB_PORT' => env('DB_HOST', 'localhost'),
-            'DB_USERNAME' => env('DB_USER', 'root'),
-            'DB_PASSWORD' => env('DB_PASSWORD', 'root'),
-            'DB_DATABASE' => env('DB_NAME', 'database')
+            'DB_PORT' => env('DB_PORT', '3306'),
+            'DB_USERNAME' => env('DB_USERNAME', 'homestead'),
+            'DB_PASSWORD' => env('DB_PASSWORD', 'secret'),
+            'DB_DATABASE' => env('DB_DATABASE', 'database')
         ];
     }
     public static function get($key)

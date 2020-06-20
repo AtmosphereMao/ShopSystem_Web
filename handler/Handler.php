@@ -19,25 +19,17 @@ class Handler
     {
         $this->DB = new Database();
     }
-
-    public function show($path, $var = array())
+    public static function getDB()
     {
-        if (!file_exists('../views/' . $path)) {
-            return;
-        }
-
-        extract($var);
-        require_once('../core/function.php');
-        include('../views/' . $path);
+        return new Database();
     }
-
-    public function redirect($dist)
+    public static function redirect($dist)
     {
         header('Location: ' . $dist);
         exit;
     }
 
-    public function GET($key)
+    public static function GET($key)
     {
         if (isset($_GET[$key])) {
             return $_GET[$key];
@@ -45,7 +37,7 @@ class Handler
         return '';
     }
 
-    public function POST($key)
+    public static function POST($key)
     {
         if (isset($_POST[$key])) {
             return $_POST[$key];
