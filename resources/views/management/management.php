@@ -3,6 +3,7 @@
 
     <script src="<?=asset('lib/layer/layer.js')?>" charset="utf-8"></script>
 
+    <script src="<?=asset('js/management.js')?>" charset="utf-8"></script>
 
     <style>
         .layui-icon{
@@ -24,6 +25,7 @@
                         <div class="trend_card col-md-12">
                             <div class="card shadow-sm">
                                 <div class="card-body">
+ 
                                     <p class="card-text"><?=getTrends($value['trends_id'])['title']?></p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
@@ -33,23 +35,26 @@
                                         <small class="text-muted text-right">
                                             × <?=$value['quantity']?>
                                             <br>
-                                            Order ID: <?=$value['id']?>
-                                            <br>
                                             Unit Price: <?=getTrends($value['trends_id'])['price']?>
                                             <br>
-                                            Surplus: <?=$value['quantity'] - $value['finished_quantity']?>
+                                            Finished: <?=$value['finished_quantity']?>
                                             <br>
                                             Status:
-                                            <?php if($value['status'] == 0 || $value['status'] == 2) {?>
+                                            <?php if ($value['status'] == 0 || $value['status'] == 2) { ?>
                                                 未完成
-                                            <?php } elseif($value['status'] == 1) {?>
+                                            <?php } else if ($value['status'] == 1) { ?>
                                                 已完成
                                             <?php } ?>
                                             <br>
-                                            Seller: <?=getUser(getTrends($value['trends_id'])['create_user'])?>
+                                            Buyer: <?=getUser(getTrends($value['trends_id'])['create_user'])?>
                                         </small>
 
                                     </div>
+                                    <?php if ($value['status'] == 0 or 2) { ?>
+                                    <div class="btn-group right" order_id="<?=$value['id']?>">
+                                        <button type="button" class="orderComplete btn btn-sm btn-outline-secondary">Complete</button>
+                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

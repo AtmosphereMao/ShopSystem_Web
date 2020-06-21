@@ -63,15 +63,15 @@
                                     <?php foreach ($trends as $value) { ?>
                                         <div class="form-group col-md-12 left text-left border-bottom p-2">
 
-                                            <input type="checkbox" value="<?=$value->id?>"  name="checkbox">
-                                            <span class="text-left w-100"><?=$value->title?></span>
-                                            <span class="right"><?=substr($value->create_time,0,10)?></span>
+                                            <input type="checkbox" value="<?=$value['id']?>"  name="checkbox">
+                                            <span class="text-left w-100"><?=$value['title']?></span>
+                                            <span class="right"><?=substr($value['created_at'],0,10)?></span>
                                             <div class="right mr-2">
-                                                <a title="编辑" href="javascript:;" onclick="question_edit('编辑','<?=url("myTrends/edit/".$value->page_id)?>','4')"
+                                                <a title="编辑" href="javascript:;" onclick="question_edit('编辑','<?=asset("myTrends/edit?page_id=".$value['page_id'])?>','4')"
                                                 class="ml-5" style="text-decoration:none">
                                                 <i class="layui-icon">&#xe642;</i>
                                                 </a>
-                                                <a title="删除" href="javascript:;" onclick="question_del(this,'<?=$value->id?>')"
+                                                <a title="删除" href="javascript:;" onclick="question_del(this,'<?=$value['id']?>')"
                                                    style="text-decoration:none">
                                                     <i class="layui-icon">&#xe640;</i>
                                                 </a>
@@ -81,6 +81,83 @@
                                 <?php } else { ?>
                                 <div class="text-center">
                                     暂无数据
+                                </div>
+                                <?php }
+                                if($count != 0 && isset($trends[0])) { ?>
+                                <div id="page" style="margin-top: 10px;">
+                                    <a href="myInfo?page=1" class="btn btn-info">首页</a>
+                                    <?php if($now !=1) {?>
+                                    <a href="myInfo?page=<?=$now-1?>" class="btn btn-info">上一页</a>
+                                    <?php } ?>
+                                    <?php if($now<=5 && $now!=1) {?>
+                                    <?php for($i=1;$i<$now;$i++) {?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } else if($now==1) { ?>
+
+                                    <?php } else if($now+5<=$count) { ?>
+                                    <?php for($i=$now-4;$i<$now;$i++) { ?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } else if($now+5>$count) {?>
+                                    <?php if($now<10) {?>
+                                    <?php if($now+5<=$count) {?>
+                                    <?php for($i=1;$i<$now;$i++) {?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } else { ?>
+                                    <?php if($count>10) { ?>
+                                    <?php for($i=$now-((10-($count-$now))-1);$i<$now;$i++) { ?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } else { ?>
+                                    <?php for($i=1;$i<$now;$i++) { ?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } ?>
+                                    <?php } ?>
+
+                                    <?php } else { ?>
+                                    <?php for($i=$now-((10-($count-$now))-1);$i<$now;$i++) { ?>
+
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } ?>
+                                    <?php } ?>
+                                    <strong style="color: red"><a href="myInfo?page=<?=$now?>" class="btn btn-info"><?=$now?></a></strong>
+                                    <?php if($now+5 <$count ) {?>
+                                    <?php if($count-$now<5) {?>
+                                    <?php for($i=$now+1;$i<=10;$i++) { ?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+
+                                    <?php } else if($now<=5) { ?>
+                                    <?php if($count>=10) { ?>
+                                    <?php for($i=$now+1;$i<=10;$i++) { ?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } else { ?>
+                                    <?php for($i=$now+1;$i<=$count;$i++) { ?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } ?>
+
+                                    <?php } else { ?>
+                                    <?php for($i=$now+1;$i<$now+6;$i++) {?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } ?>
+
+                                    <?php } else { ?>
+                                    <?php for($i=$now+1;$i<=$count;$i++) { ?>
+                                    <a href="myInfo?page=<?=$i?>" class="btn btn-info"><?=$i?></a>
+                                    <?php } ?>
+                                    <?php } ?>
+
+                                    <?php if($now !=$count) { ?>
+                                    <a href="myInfo?page=<?=$now+1?>" class="btn btn-info">下一页</a>
+                                    <?php } ?>
+                                    <a href="myInfo?page=<?=$count?>" class="btn btn-info">尾页</a>
                                 </div>
                                 <?php } ?>
                             </div>

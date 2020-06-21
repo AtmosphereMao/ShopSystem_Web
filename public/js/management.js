@@ -17,28 +17,12 @@ $(document).ready(function () {
         }
     });
 
-    if ($('.trend_card').length >= 6) {
-        $('.box').after('<center><button type="button"  id="more" class="btn btn-primary m-4 btn-lg btn-block w-75" style=""><span class="lead">加载更多</span></button></center>');
-    }
-    $('#more').click(function () {
-        $.post('', {
-            '_token': $('meta[name="csrf-token"]').attr('content'),
-            'count': $('.trend_card').length
-        }, function (data) {
-            if (data == "") {
-                $('#more').remove();
-                $('.box').append('<span class="w-100 m-4 text-center">已全部显示</span>');
-            }
-            $('.box').append(data);
-
-        });
-    });
      $('.orderComplete').click(function () {
         $.post("management/complete", {
             '_method': 'post',
-            '_token': $('meta[name="csrf-token"]').attr('content'),
             'order_id': $(this).parent('div').attr('order_id')
         }, function (data) {
+            data = JSON.parse(data);
             if (data.status == 0) {
                 // $(obj).parents("tr").remove();
                 layer.msg(data.msg, {icon: 6, time: 800,});

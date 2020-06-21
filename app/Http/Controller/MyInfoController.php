@@ -9,6 +9,7 @@
 //namespace app\Http\Controller;
 
 use handler\Handler;
+use App\Http\Model\Trends;
 use App\Http\Model\Users;
 
 class MyInfoController extends Handler
@@ -22,7 +23,13 @@ class MyInfoController extends Handler
 
     public function index()
     {
-        return view('myinfo/myinfo');
+        $trends = Trends::query()->where('`create_user` = ?', Auth::user()['id'])
+            ->orderBy('id','desc')
+            ->page(self::GET('page') ? (self::GET('page')-1) * 6 : 0 ,6)
+            ->fetch();
+        return view('myinfo/myinfo',['trends'=>$trends, 'count'=>ceil(count($trends)/8),
+            'now'=>self::GET('page')? self::GET('page') : 1,
+            'all'=>count($trends)]);
     }
     public function edit()
     {

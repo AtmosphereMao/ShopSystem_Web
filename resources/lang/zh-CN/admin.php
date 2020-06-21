@@ -122,7 +122,10 @@ return [
     'buy_error_balance'      => '购买失败，余额不足',
     'buy_error'              => '购买失败',
     'buy_trend_no'           => '货存量不足',
-    'buy_success'            => '购买成功'
+    'buy_success'            => '购买成功',
+    'complete_error_success' => '订单已经完成，无需重复提交',
+    'complete_success'       => '交货成功',
+    'complete_error'         => '交货失败'
 
 
 ];

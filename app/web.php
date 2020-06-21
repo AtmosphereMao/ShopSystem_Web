@@ -40,7 +40,7 @@ Router::GET('/order', 'OrderController/index');
 
 /* Management */
 Router::GET('/management', 'ManagementController/index');
-Router::GET('/management/complete', 'ManagementController/orderComplete');
+Router::POST('/management/complete', 'ManagementController/orderComplete');
 
 
 
