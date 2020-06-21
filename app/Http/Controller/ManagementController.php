@@ -15,6 +15,13 @@ use App\Http\Model\Users;
 
 class ManagementController extends Handler
 {
+    public function __construct()
+    {
+        if(auth()){
+            self::redirect('login');
+        }
+    }
+
     public function index()
     {
         $orders = Order::query()->where('`owner_user` = ?', Auth::user()['id'])

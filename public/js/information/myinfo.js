@@ -36,10 +36,10 @@ function delAll () {
         }
         id = JSON.stringify(id);
         $.post('myTrends/delete', {
-            '_method': 'delete',
-            '_token': $('meta[name="csrf-token"]').attr('content'),
+            '_method': 'DELETE',
             'id': id
         }, function (data) {
+            data = JSON.parse(data);
             if (data.status == 0) {
                 layer.msg(data.msg, {icon: 6, time: 800});
                 setTimeout(function () {
@@ -64,7 +64,8 @@ function question_edit (title,url,id,w,h) {
 function question_del(obj,id){
     layer.confirm('确认要删除吗？',{ btn: ['确定', '取消'] },function(){
         //发异步删除数据
-        $.post("myTrends/delete",{'_method':'delete','_token':$('meta[name="csrf-token"]').attr('content'),'id':id},function (data) {
+        $.post("myTrends/delete",{'_method':'delete','id':id},function (data) {
+            data = JSON.parse(data);
             if(data.status==0){
                 $(obj).parents("tr").remove();
                 layer.msg(data.msg,{icon:6,time: 800,});

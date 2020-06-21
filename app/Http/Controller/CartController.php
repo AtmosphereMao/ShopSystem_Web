@@ -19,7 +19,7 @@ class CartController extends Handler
     public function __construct()
     {
         if(auth()){
-            return self::redirect('login');
+            self::redirect('login');
         }
     }
 

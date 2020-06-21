@@ -17,13 +17,13 @@ class MyInfoController extends Handler
     public function __construct()
     {
         if(auth()){
-            return self::redirect('login');
+            self::redirect('login');
         }
     }
 
     public function index()
     {
-        $trends = Trends::query()->where('`create_user` = ?', Auth::user()['id'])
+        $trends = Trends::query()->where('`create_user` = ? and `status` = ? or `status` = ? ', [Auth::user()['id'],0,1])
             ->orderBy('id','desc')
             ->page(self::GET('page') ? (self::GET('page')-1) * 6 : 0 ,6)
             ->fetch();

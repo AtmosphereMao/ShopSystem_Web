@@ -113,7 +113,7 @@ class Router
         if (!isset(self::$routerTable[$requestMethod][$this->urlPath])) {
             $this->urlPath = 'NotFound';
         }
-
+        // exit;
         $route = explode('/', self::$routerTable[$requestMethod][$this->urlPath]);
         $this->handlerFile = $route[0];
         $this->handlerMethod = $route[1];

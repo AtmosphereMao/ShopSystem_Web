@@ -25,6 +25,10 @@ Router::POST('/myInfo/edit', 'MyInfoController/save');
 Router::GET('/myInfo/password/reset', 'MyInfoController/reset');
 Router::POST('/myInfo/password/reset', 'MyInfoController/resetPassword');
 
+/* MyTrends */
+Router::DELETE('/myTrends/delete', 'MyTrendsController/trendsDelete');
+
+
 /* Trends */
 Router::GET('/home', 'HomeController/home');
 Router::GET('/home/trends/page', 'HomeController/trendShow');
@@ -41,6 +45,4 @@ Router::GET('/order', 'OrderController/index');
 /* Management */
 Router::GET('/management', 'ManagementController/index');
 Router::POST('/management/complete', 'ManagementController/orderComplete');
-
-
 
