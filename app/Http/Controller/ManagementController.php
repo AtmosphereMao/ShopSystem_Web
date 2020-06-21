@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: AtmosphereMao
  * Date: 2020/6/21
- * Time: 14:31
+ * Time: 15:14
  */
 
 
@@ -12,7 +12,7 @@ use App\Http\Model\Trends;
 use App\Http\Model\Cart;
 use App\Http\Model\Order;
 
-class OrderController extends Handler
+class ManagementController extends Handler
 {
     public function index()
     {

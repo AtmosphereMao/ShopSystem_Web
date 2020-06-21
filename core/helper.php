@@ -202,3 +202,11 @@ if (! function_exists('getUser')) {
         return \App\Http\Model\Users::query()->where('`id` = ?', $id)->fetch()[0]['name'];
     }
 }
+
+if (! function_exists('getTrends')) {
+
+    function getTrends($id)
+    {
+        return \App\Http\Model\Trends::query()->where('`id` = ?', $id)->fetch()[0];
+    }
+}

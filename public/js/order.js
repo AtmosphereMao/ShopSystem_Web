@@ -36,14 +36,14 @@ $(document).ready(function () {
 
 });
 function trendShow(id){
-    $.get('home/trends/page/'+id,{},function (data) {
+    $.get('home/trends/page?page_id='+id,{},function (data) {
+        data = JSON.parse(data)
         layer.open({
             type: 1,
             // skin: 'layui-layer-rim', //加上边框
             area: ['90%', '80%; max-height:80%;'], //宽高
             title:data.title,
-            content: "<div style='margin:1rem' ><p style='font-weight: bolder'>"+data.backbone+"</p><p>"+data.content+"</p><br>"+"<span style='color:darkred'></span>"+data.create_user+"<br>"+"<span style='color: darkred'>  </span>"+data.created_at+"</div>",
-        });
+            content: "<div style='margin:1rem' ><p style='font-weight: bolder'>"+data.backbone+"</p><p>"+data.content+"</p><br>"+"<span style='color:darkred'> 发布者：</span>"+data.create_user+"<br>"+"<span style='color: darkred'> 发布时间:  </span>"+data.created_at+"<br><span style='color: darkred'> Price:  </span>"+data.price+"</br><span style='color: darkred'> Quantity: </span>"+data.quantity+"</div>",        });
     });
 
 }

@@ -14,7 +14,7 @@
         <div class="album py-5 bg-light">
             <div class="container">
 
-                <div class="row">
+                <div class="row box">
                     <?php if (!empty($trends)) { ?>
                         <?php foreach ($trends as $value) { ?>
                         <div class="trend_card col-md-4">

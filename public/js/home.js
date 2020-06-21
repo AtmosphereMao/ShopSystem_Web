@@ -28,9 +28,9 @@ $(document).ready(function () {
         }, function (data) {
             if (data == "") {
                 $('#more').remove();
-                $('.row').append('<span style="margin-top: 10px;" class="w-100 text-center">已全部显示</span>');
+                $('.box').append('<span style="margin-top: 10px;" class="w-100 text-center">已全部显示</span>');
             }
-            $('.row').append(data);
+            $('.box').append(data);
 
         });
     });

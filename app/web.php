@@ -38,4 +38,9 @@ Router::POST('/cart/submit', 'CartController/cartSubmit');
 /* Order */
 Router::GET('/order', 'OrderController/index');
 
+/* Management */
+Router::GET('/management', 'ManagementController/index');
+Router::GET('/management/complete', 'ManagementController/orderComplete');
+
+
 
