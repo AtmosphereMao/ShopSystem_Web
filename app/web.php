@@ -26,6 +26,11 @@ Router::GET('/myInfo/password/reset', 'MyInfoController/reset');
 Router::POST('/myInfo/password/reset', 'MyInfoController/resetPassword');
 
 /* MyTrends */
+Router::GET('/myTrends/publish', 'MyTrendsController/publish');
+Router::POST('/myTrends/publish', 'MyTrendsController/trendsPublish');
+Router::GET('/myTrends/edit', 'MyTrendsController/edit');
+Router::POST('/myTrends/edit', 'MyTrendsController/trendsEdit');
+Router::POST('/myTrends/release/imageupload','MyTrendsController/imageUpload');
 Router::DELETE('/myTrends/delete', 'MyTrendsController/trendsDelete');
 
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="">
 
     <link rel="icon" href="<?=asset('favicon.ico')?>">
 
@@ -28,7 +28,7 @@
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="<?=asset('/')?>">Home</a>
+        <a class="navbar-brand" href="<?=asset('/')?>"><?= env('APP_NAME') ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,7 +69,7 @@
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="<?=asset("myTrends/publish")?>">
-                        发布动态
+                        发布商品
                         </a>
                         <a class="dropdown-item" href="<?=asset("myInfo")?>">
                         个人空间
@@ -84,7 +84,6 @@
                         </a>
 
                         <form id="logout-form" action="<?= asset('logout') ?>" method="POST" style="display: none;">
-                            @csrf
                         </form>
 
 

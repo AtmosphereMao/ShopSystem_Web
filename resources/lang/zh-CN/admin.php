@@ -125,7 +125,20 @@ return [
     'buy_success'            => '购买成功',
     'complete_error_success' => '订单已经完成，无需重复提交',
     'complete_success'       => '交货成功',
-    'complete_error'         => '交货失败'
+    'complete_error'         => '交货失败',
+    'title.required'         => '标题不能为空',
+    'title.max'              => '标题不能超过25个字',
+    'content.required'       => '内容不能为空',
+    'backbone.required'      => '主干不能为空',
+    'backbone.max'           => '主干不能超过60个字',
+    'price.max'              => '价格不能超过11位数',
+    'quantity.max'           => '数量不能超过4位数',
+    'quantity.integer'       => '数量必须为数字',
+    'price.integer'          => '价格必须为数字',
+    'quantity.required'      => '数量上限为9999',
+    'price.required'         => '价格上限为999999',
+    'publish_success'        => '发布成功',
+    'publish_error'        => '发布失败'
 
 
 ];

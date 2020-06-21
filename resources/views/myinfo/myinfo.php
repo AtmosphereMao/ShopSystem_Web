@@ -51,7 +51,7 @@
 
 
                         <div class="card">
-                            <div class="card-header">我的动态</div>
+                            <div class="card-header">我的商品</div>
                             <div class="card-body text-center">
 
                                 <xblock><button class="btn btn-danger right m-1" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button>
