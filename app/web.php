@@ -9,7 +9,6 @@
 use core\Router;
 
 Router::GET('/', 'HomeController/index');
-Router::GET('/home', 'HomeController/home');
 
 /* Auth */
 Router::GET('/login', 'LoginController/index');
@@ -25,4 +24,18 @@ Router::POST('/myInfo/edit', 'MyInfoController/save');
 
 Router::GET('/myInfo/password/reset', 'MyInfoController/reset');
 Router::POST('/myInfo/password/reset', 'MyInfoController/resetPassword');
+
 /* Trends */
+Router::GET('/home', 'HomeController/home');
+Router::GET('/home/trends/page', 'HomeController/trendShow');
+Router::POST('/home/trends/buy', 'HomeController/trendBuy');
+
+/* Cart */
+Router::GET('/cart', 'CartController/index');
+Router::DELETE('/cart/delete', 'CartController/cartDelete');
+Router::POST('/cart/submit', 'CartController/cartSubmit');
+
+/* Order */
+Router::GET('/order', 'OrderController/index');
+
+

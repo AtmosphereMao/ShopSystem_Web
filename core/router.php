@@ -44,6 +44,9 @@ class Router
         /* Model */
         require_once('model.php');
         require_once('../app/Http/Model/Users.php');
+        require_once('../app/Http/Model/Trends.php');
+        require_once('../app/Http/Model/Cart.php');
+        require_once('../app/Http/Model/Order.php');
 
 
         $handler = new $this->handlerFile();
@@ -64,9 +67,22 @@ class Router
         self::$routerTable['POST'][$path] = $handler;
     }
 
+    public static function DELETE($path, $handler)
+    {
+        $path = trim($path, '/');
+        self::$routerTable['DELETE'][$path] = $handler;
+    }
+
+    public static function PUT($path, $handler)
+    {
+        $path = trim($path, '/');
+        self::$routerTable['PUT'][$path] = $handler;
+    }
+
     private function pathProcessor()
     {
         $urlPathInfo = @explode('/', $_SERVER['REQUEST_URI']);
+        /* 路由处理 */
         if(count($urlPathInfo)>1){
             for($i=1; $i < count($urlPathInfo); $i++)
             {
@@ -81,11 +97,18 @@ class Router
         }else{
             $this->urlPath = @$urlPathInfo[1];
         }
+
+        /* GET参数处理 */
+        $urlPathInfo = @explode('?', $this->urlPath);
+        $this->urlPath = @$urlPathInfo[0];
+        parse_str(@$urlPathInfo[1],$_GET);
+
+
         if ($this->urlPath == null) {
             // default handler
             $this->urlPath = '';
         }
-        $requestMethod = $_SERVER['REQUEST_METHOD'];
+        $requestMethod = isset($_POST['_method']) ? strtoupper($_POST['_method']) : $_SERVER['REQUEST_METHOD'];
         // check the router table
         if (!isset(self::$routerTable[$requestMethod][$this->urlPath])) {
             $this->urlPath = 'NotFound';

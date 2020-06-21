@@ -15,6 +15,7 @@ class Auth extends Handler
 {
     private static $users;
     private $table = 'users';
+    const TABLE = 'users';
 
     public function __construct()
     {
@@ -28,7 +29,7 @@ class Auth extends Handler
      */
     public static function getUserModel()
     {
-        return Model::getModel()->select('users');
+        return Model::getModel()->select(self::TABLE);
     }
 
     /**
@@ -80,7 +81,7 @@ class Auth extends Handler
             'updated_at' => date('y-m-d h:i:s'),
             'balance'   => 0
         ];
-        $result = Model::getModel()->insert('users', $data);
+        $result = Model::getModel()->insert(self::TABLE, $data);
         return !$result ? true : abort('500');
 
     }

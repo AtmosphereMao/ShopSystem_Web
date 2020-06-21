@@ -13,6 +13,13 @@ use App\Http\Model\Users;
 
 class MyInfoController extends Handler
 {
+    public function __construct()
+    {
+        if(auth()){
+            return self::redirect('login');
+        }
+    }
+
     public function index()
     {
         return view('myinfo/myinfo');
@@ -29,9 +36,10 @@ class MyInfoController extends Handler
             array_push($msg, k('name_error_format'));
         }else {
             $data = [
-                'name' => self::POST('name')
+                'name' => self::POST('name'),
+                'updated_at' => date('y-m-d h:i:s')
             ];
-            $result = Users::getModel()->update(Users::TABLE, $data)->where('`id` = ?', Auth::user()['id'])->end();
+            $result = Users::update($data, '`id` = ?',  Auth::user()['id']);
             if (!$result) {
                 array_push($msg, k('save_complete'));
             } else {
@@ -54,9 +62,10 @@ class MyInfoController extends Handler
             || self::POST('password') === self::POST('password_confirmation'))
         {
             $data = [
-                'password' => password_hash(self::POST('password'),PASSWORD_DEFAULT)
+                'password' => password_hash(self::POST('password'),PASSWORD_DEFAULT),
+                'updated_at' => date('y-m-d h:i:s')
             ];
-            $result = Users::getModel()->update(Users::TABLE, $data)->where('`id` = ?', Auth::user()['id'])->end();
+            $result = Users::update($data, '`id` = ?',  Auth::user()['id']);
             if (!$result) {
                 array_push($msg, k('save_complete'));
             } else {

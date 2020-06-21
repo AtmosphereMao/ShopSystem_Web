@@ -59,7 +59,7 @@ return [
     'choose_file'           => '选择文件',
     'choose_image'          => '选择图片',
     'more'                  => '更多',
-    'deny'                  => '无权访问',
+    'deny'                  => '无权访问，请进行登录',
     'administrator'         => '管理员',
     'roles'                 => '角色',
     'permissions'           => '权限',
@@ -114,7 +114,15 @@ return [
     '404'                    => '页面未找到',
     '500'                    => '服务器发送未知错误，请联系管理员',
     '403'                    => '权限不足',
-    'reset_error'            => '旧密码错误 或者 两次密码不相同'
+    'reset_error'            => '旧密码错误 或者 两次密码不相同',
+    'trend_null'             => '商品不存在或已下架',
+    'cart_null'              => '购物车为空，请刷新重试',
+    'cart_buy_error'         => '购买失败，有商品已下架，请移除后再重试',
+    'add_cart_success'       => '成功加入购物车',
+    'buy_error_balance'      => '购买失败，余额不足',
+    'buy_error'              => '购买失败',
+    'buy_trend_no'           => '货存量不足',
+    'buy_success'            => '购买成功'
 
 
 ];

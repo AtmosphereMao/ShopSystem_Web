@@ -21,9 +21,10 @@ $(document).ready(function () {
         $('.row').after('<center><button type="button"  id="more" class="btn btn-primary btn-lg btn-block w-75" style=""><span class="lead">加载更多</span></button></center>');
     }
     $('#more').click(function () {
-        $.post('', {
-            '_token': $('meta[name="csrf-token"]').attr('content'),
-            'count': $('.trend_card').length
+        $.get('', {
+            // '_token': $('meta[name="csrf-token"]').attr('content'),
+            'page': Math.ceil($('.trend_card').length / 6) + 1,
+            'search' : getQueryVariable('search') ? getQueryVariable('search') : ''
         }, function (data) {
             if (data == "") {
                 $('#more').remove();
@@ -36,9 +37,10 @@ $(document).ready(function () {
     $('.trend_buy').click(function () {
 
         $.post('home/trends/buy', {
-            '_token': $('meta[name="csrf-token"]').attr('content'),
+            // '_token': $('meta[name="csrf-token"]').attr('content'),
             'trend_id': $(this).parent('div').attr('trend_id')
         }, function (data) {
+            data = JSON.parse(data);
             if(data.status==0){
                 layer.msg(data.msg,{time: 600,});
                 // setTimeout(function () {location.href=location.href;},800);
@@ -70,14 +72,14 @@ $(document).ready(function () {
         }
 });
 function trendShow(id){
-    $.get('home/trends/page/'+id,{},function (data) {
+    $.get('home/trends/page?page_id='+id,{},function (data) {
+        data = JSON.parse(data);
         layer.open({
             type: 1,
             // skin: 'layui-layer-rim', //加上边框
             area: ['90%', '80%; max-height:80%;'], //宽高
             title:data.title,
-            content: "<div style='margin:1rem' ><p style='font-weight: bolder'>"+data.backbone+"</p><p>"+data.content+"</p><br>"+"<span style='color:darkred'></span>"+data.create_user+"<br>"+"<span style='color: darkred'>  </span>"+data.created_at+"</div>",
-        });
+            content: "<div style='margin:1rem' ><p style='font-weight: bolder'>"+data.backbone+"</p><p>"+data.content+"</p><br>"+"<span style='color:darkred'> 发布者：</span>"+data.create_user+"<br>"+"<span style='color: darkred'> 发布时间:  </span>"+data.created_at+"<br><span style='color: darkred'> Price:  </span>"+data.price+"</br><span style='color: darkred'> Quantity: </span>"+data.quantity+"</div>",        });
     });
 
 }
@@ -88,3 +90,14 @@ function trendBuy()
 // function eventShowPage(id){
 //     window.location.href="trends/more/"+id;
 // }
+
+function getQueryVariable(variable)
+{
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+}

@@ -18,8 +18,18 @@ class Users extends Model
     {
     }
 
+    public static function create($data)
+    {
+        return parent::getModel()->insert(self::TABLE, $data);
+    }
+
     public static function query()
     {
         return parent::getModel()->select(self::TABLE);
+    }
+
+    public static function update($data, $query, $queryData)
+    {
+        return parent::getModel()->update(self::TABLE, $data)->where($query, $queryData)->end();
     }
 }

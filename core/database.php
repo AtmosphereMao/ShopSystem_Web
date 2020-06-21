@@ -28,6 +28,7 @@ class DB
                 (int)$config["DB_PORT"]
             );
             self::$DB = $db;
+            self::$DB->query("SET NAMES 'utf8'"); /* 设置中文编码 */
         }
         return self::$DB;
     }
@@ -131,6 +132,55 @@ class Database
         } else {
             $this->queryData = array_merge($this->queryData, $data);
         }
+        return $this;
+    }
+
+    public function whereIn($row, $data = array())
+    {
+        $valueMask = '';
+        for ($i = 0; $i < count(array_values($data)); $i++) {
+            $valueMask .= '?';
+            if ($i !== count(array_values($data)) - 1) {
+                $valueMask .= ',';
+            }
+        }
+        $this->queryString .= " WHERE $row IN ($valueMask)";
+        // single param
+        if (!is_array($data)) {
+            $this->queryData = array_merge($this->queryData, array($data));
+        } else {
+            $this->queryData = array_merge($this->queryData, $data);
+        }
+        return $this;
+    }
+
+    public function whereAnd($query, $data = array())
+    {
+        $this->queryString .= " and $query";
+        // single param
+        if (!is_array($data)) {
+            $this->queryData = array_merge($this->queryData, array($data));
+        } else {
+            $this->queryData = array_merge($this->queryData, $data);
+        }
+        return $this;
+    }
+
+    public function page($start, $end)
+    {
+        $this->queryString .= " limit ?,?";
+
+        $data = [
+            (int)$start,
+            (int)$end
+        ];
+        // single param
+        $this->queryData = array_merge($this->queryData, $data);
+        return $this;
+    }
+    public function orderBy($row, $mode)
+    {
+        $this->queryString .= " ORDER BY $row $mode";
         return $this;
     }
 

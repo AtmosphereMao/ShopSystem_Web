@@ -194,3 +194,11 @@ if (! function_exists('is_email')) {
         }
     }
 }
+
+if (! function_exists('getUser')) {
+
+    function getUser($id)
+    {
+        return \App\Http\Model\Users::query()->where('`id` = ?', $id)->fetch()[0]['name'];
+    }
+}

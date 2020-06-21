@@ -16,33 +16,16 @@ $(document).ready(function () {
             form.submit();
         }
     });
-
-    // if ($('.trend_card').length >= 6) {
-    //     $('.row').after('<center><button type="button"  id="more" class="btn btn-primary btn-lg btn-block w-75" style=""><span class="lead">加载更多</span></button></center>');
-    // }
-    // $('#more').click(function () {
-    //     $.post('', {
-    //         '_token': $('meta[name="csrf-token"]').attr('content'),
-    //         'count': $('.trend_card').length
-    //     }, function (data) {
-    //         if (data == "") {
-    //             $('#more').remove();
-    //             $('.row').append('<span style="margin-top: 10px;" class="w-100 text-center">已全部显示</span>');
-    //         }
-    //         $('.row').append(data);
-    //
-    //     });
-    // });
-
 });
 function trendShow(id){
-    $.get('home/trends/page/'+id,{},function (data) {
+    $.get('home/trends/page?page_id='+id,{},function (data) {
+        data = JSON.parse(data);
         layer.open({
             type: 1,
             // skin: 'layui-layer-rim', //加上边框
             area: ['90%', 'auto; max-height:80%;'], //宽高
             title:data.title,
-            content: "<div style='margin:1rem' ><p style='font-weight: bolder'>"+data.backbone+"</p><p>"+data.content+"</p><br>"+"<span style='color:darkred'></span>"+data.create_user+"<br>"+"<span style='color: darkred'>  </span>"+data.created_at+"</div>",
+            content: "<div style='margin:1rem' ><p style='font-weight: bolder'>"+data.backbone+"</p><p>"+data.content+"</p><br>"+"<span style='color:darkred'> 发布者：</span>"+data.create_user+"<br>"+"<span style='color: darkred'> 发布时间:  </span>"+data.created_at+"<br><span style='color: darkred'> Price:  </span>"+data.price+"</br><span style='color: darkred'> Quantity: </span>"+data.quantity+"</div>",
         });
     });
 
@@ -50,7 +33,8 @@ function trendShow(id){
 /*删除*/
 function cart_del(obj,id){
         //发异步删除数据
-        $.post("cart/delete",{'_method':'delete','_token':$('meta[name="csrf-token"]').attr('content'),'id':id},function (data) {
+        $.post("cart/delete",{'_method':'DELETE','id':id},function (data) {
+            data = JSON.parse(data);
             if(data.status==0){
                 $(obj).parents("tr").remove();
                 layer.msg(data.msg,{time: 500,});
@@ -73,6 +57,7 @@ function cartSumbit() {
             '_method': 'post',
             '_token': $('meta[name="csrf-token"]').attr('content')
         }, function (data) {
+            data = JSON.parse(data);
             if (data.status == 0) {
                 // $(obj).parents("tr").remove();
                 layer.msg(data.msg, {icon: 6, time: 800,});
